@@ -1,0 +1,41 @@
+.trapezoid {
+    border-bottom: 50px solid gray;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 90%;
+    margin : 0 auto;
+    /* background-color: rgba(0, 0, 0, 0.1);; */
+    opacity: 0.3;
+    filter :drop-shadow(0 128px 63px rgba(8,8,8,0.38))
+}
+.ghe{
+    height: 35px;
+    width: 35px;
+    margin : 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color :rgba(123,122,122);
+    border:none;
+    color : #fff;
+    position: relative;
+}
+
+.ghe::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.gheDaDat {
+    background-color: rgb(232,76,76);
+    cursor: no-drop;
+}
+.gheVip{
+    background-color: rgb(228,74,8);
+}

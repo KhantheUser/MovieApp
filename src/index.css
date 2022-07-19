@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components{
+    .underLineEffect{
+        
+       @apply no-underline hover:text-yellow-400 duration-300 ease-in-out transition-all;
+       
+       
+    }
+    .container-dn{
+        @apply max-w-screen-xl mx-auto 
+    }
+}
+/* .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+        max-width: 100%;
+    }
+}
+.container-fluid{
+    width: 100%;
+} */

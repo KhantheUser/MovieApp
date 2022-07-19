@@ -1,0 +1,65 @@
+.trapezoid {
+    border-bottom: 50px solid gray;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 90%;
+    margin: 0 auto;
+    /* background-color: rgba(0, 0, 0, 0.1);; */
+    opacity: 0.3;
+    filter: drop-shadow(0 128px 63px rgba(8, 8, 8, 0.38))
+}
+
+.ghe {
+    height: 35px;
+    width: 35px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(123, 122, 122);
+    border: none;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px rgba(255,255,255,0.7);
+}
+.ghe:hover {
+    transform: scale(1.1) !important;
+    
+}
+.gheDangDat {
+    background-color: rgb(18,176,18) !important;
+}
+/* .viTri{
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgb(211, 204, 204);
+    opacity: 1;
+    border-bottom-left-radius: 4px;border-bottom-right-radius: 4px;
+    transition: opacity 0.3s;
+} */
+.gheDaDat {
+    background-color: rgb(221, 43, 43);
+    cursor: no-drop !important;
+}
+.gheDaDat:hover{
+    transform: scale(1) !important;
+}
+
+.gheVip {
+    background-color: rgb(228, 74, 8);
+}
+.gheMinhDat {
+    background-color: #fff;
+}
+.gheKhachDat {
+    background-color: rgb(34, 34, 109 ) !important;
+    cursor: no-drop !important;
+}
+.gheKhachDat:hover{
+    transform: scale(1) !important;
+}
