@@ -86,7 +86,7 @@ export default function Profile() {
                 <AiFillYoutube/>
               </span>
                <span className="block mr-2 text-4xl text-red-300">
-                <AiFillYoutube/>
+                <AiFillLinkedin/>
               </span>
                <span className="block mr-2 text-4xl text-red-300">
                 <AiFillFacebook/>
@@ -103,15 +103,15 @@ export default function Profile() {
           </div>
            <div className='flex items-center mb-3'>
             <img className='rounded-md' style={{height:'40px',width:'40px'}} src="https://cdn.tgdd.vn/2020/11/GameApp/Untitled-23333-200x200-1.jpg" alt="" />
-            <p className="ml-2 text-base">Javascript</p>
+            <p className="ml-2 text-base">Photoshop</p>
           </div>
            <div className='flex items-center mb-3'>
             <img className='rounded-md' style={{height:'40px',width:'40px'}} src="https://cdn.tgdd.vn/2021/01/GameApp/AdobePremiereProLogo.svg-200x200.png" alt="" />
-            <p className="ml-2 text-base">Javascript</p>
+            <p className="ml-2 text-base">Premiere Pro</p>
           </div>
            <div className='flex items-center mb-3'>
             <img className='rounded-md' style={{height:'40px',width:'40px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/1051px-Adobe_After_Effects_CC_icon.svg.png" alt="" />
-            <p className="ml-2 text-base">Javascript</p>
+            <p className="ml-2 text-base">After Effect</p>
           </div>
           
          </div>
