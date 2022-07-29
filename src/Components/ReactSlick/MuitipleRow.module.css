@@ -1,3 +1,32 @@
 .width-item{
     width: 100% !important;
 }
+.now-showing,.now-coming,.multi-select{
+    transition: all 0.4s linear;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    border : 1px solid #18a5a7 !important;
+    border-radius: 4px;
+}
+
+.now-showing:hover
+{
+
+transform: scale(1.1);
+}
+
+
+.ani-showing {
+    display: block;
+    height: 200px;
+    width:200px;
+    position: absolute;
+    background-color: #18a5a7;
+top: -46px;
+    left: 0;
+    transform: rotate(199deg) translate(255px, 10px);
+    transition: all 0.4s linear;
+
+}
+.now-showing:hover .ani-showing{
+    transform: rotate(199deg) translate(155px, 10px);
+}

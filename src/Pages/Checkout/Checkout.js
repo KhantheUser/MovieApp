@@ -220,15 +220,15 @@ return ()=>{
 
 
 
-    <TabPane  tab={<span className="text-blue-500 block ">Pick your seats and Checkout</span>}  key="1">
+    <TabPane  tab={<span className="text-white block font-semibold ">Pick your seats and Checkout</span>}  key="1">
       
      <Checkout/>
       
     </TabPane>
-    <TabPane tab={<span className="text-blue-500">Payment's history</span>}   key="2">
+    <TabPane tab={<span className="text-white block font-semibold">Payment's history</span>}   key="2">
       <KetQuaDatVe/>
     </TabPane>
-    <TabPane tab={<span className="text-blue-500" onClick={()=>navigate('/')}>Home</span>}   key="3">
+    <TabPane tab={<span className="text-white block font-semibold" onClick={()=>navigate('/')}>Home</span>}   key="3">
      
     </TabPane>
    

@@ -10,6 +10,15 @@ const movieAPI = {
                 MaPhim : id
             }
         })
+    },
+    getMoviePage : (page)=>{
+        return axiosClient.get(`QuanLyPhim/LayDanhSachPhimPhanTrang`,{
+            params :{
+                maNhom : 'GP02',
+                soTrang : page,
+                soPhanTuTrenTrang : 10
+            }
+        })
     }
 }
 export default movieAPI

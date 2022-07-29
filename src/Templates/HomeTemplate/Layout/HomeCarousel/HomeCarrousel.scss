@@ -1,0 +1,121 @@
+.slick-dots-bottom{
+    margin: 0 !important;
+    padding : 0 !important;
+}
+.custom-dot-class{
+    li{
+        button{
+
+            background-color: #ffd700 !important;
+            &::before{
+                    display: none;
+            }
+        }
+    }
+}
+.arrow-next-css {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    margin: 100px 0 0 100px;
+    width: 50px;
+    height: 50px;
+    border: solid 2px #ffd700;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all .2s linear;
+    top: 4%;
+    right: 2%;
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 35%;
+        height: 10%;
+        top: 41%;
+        left: 55%;
+        background: #ffd700;
+        z-index: 2;
+        transform: translate(-50%, -50%) rotate(45deg);
+        transition: all .2s linear;
+    }
+
+    &:after {
+        z-index: 3;
+        top: 59%;
+        left: 55%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        border: solid 3px #ffd900d4;
+
+        &:after,
+        &:before {
+            background: #ffd900d4;
+        }
+    }
+
+    &:active {
+        border: solid 3px #111;
+
+        &:after,
+        &:before {
+            background: #111;
+        }
+    }
+}
+.arrow-pre-css {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    margin: 100px 0 0 100px;
+    width: 50px;
+    height: 50px;
+    border: solid 2px #ffd700;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all .2s linear;
+    top: 4%;
+    left: -4%;
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 35%;
+        height: 10%;
+        top: 41%;
+        left: 55%;
+        background: #ffd700;
+        z-index: 2;
+        transform: translate(-70%, -50%) rotate(-45deg);
+        transition: all .2s linear;
+    }
+
+    &:after {
+        z-index: 3;
+        top: 59%;
+        left: 55%;
+        transform: translate(-70%, -50%) rotate(45deg);
+    }
+
+    &:hover {
+        border: solid 3px #ffd900d4;
+
+        &:after,
+        &:before {
+            background: #ffd900d4;
+        }
+    }
+
+    &:active {
+        border: solid 3px #111;
+
+        &:after,
+        &:before {
+            background: #111;
+        }
+    }
+}

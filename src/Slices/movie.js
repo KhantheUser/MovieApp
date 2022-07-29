@@ -35,6 +35,14 @@ export const getMovieDetails = createAsyncThunk("get/movies/details",async(id)=>
     console.log(e)
   }
 })
+export const getMoviePage = createAsyncThunk("get/movies/page",async(page)=>{
+  try{
+    const data = await movieAPI.getMoviePage(page)
+    return data.items
+  }catch(e){
+    console.log(e)
+  }
+})
 const movieSlice = createSlice({
     name: "movie",
     initialState: {
@@ -67,7 +75,12 @@ const movieSlice = createSlice({
         },
         [getMovieDetails.fulfilled]:(state,{payload})=>{
           state.movieDetail = payload
+        },
+        [getMoviePage.fulfilled]:(state,{payload})=>{
+          console.log(payload)
+          state.movieArr = payload.slice(0,8)
         }
+
     }
 })
 

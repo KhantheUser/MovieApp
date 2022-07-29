@@ -10,7 +10,7 @@ import './circle.css'
 import {  Radio, Space, Tabs  } from 'antd';
 import _, { map } from "lodash";
 import { render } from "@testing-library/react";
-import './movieDetial.css'
+import './movieDetial.scss'
 const { TabPane } = Tabs;
 function MovieDetails() {
   const { id } = useParams();
@@ -30,7 +30,15 @@ function MovieDetails() {
   }, [id]);
   const renderHeThongRap = ()=>{
     if(details === '[]'){
-        return <div className="flex items-center justify-center w-100" style={{height:'200px'}}><h1 className="text-lg text-center">This film will come soon</h1></div>
+        return <div className="flex items-center justify-center w-100" style={{height:'300px'}}>
+        {/* <h1 className="text-lg text-center block">This film will come soon</h1> */}
+        <div>
+        <h1 className=" text-center text-lg block">This film will come soon... {'<3'}</h1>
+
+        <img src="https://2.bp.blogspot.com/-sZ0qJL0EpK0/XS80WOGQkNI/AAAAAAA1sWc/FYm6tq93O9IKflV2BSG7epni3Y6INv3NgCLcBGAs/s1600/AW3953769_10.gif" alt="" style={{height:'200px'}}/>
+        </div>
+        
+        </div>
     }
       return movieDetail.heThongRapChieu?.map((htr,index)=>{
           
@@ -69,6 +77,7 @@ function MovieDetails() {
   return (
     // linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),
     <div
+    className="movieDetails"
       style={{
         // height: "800px",
         backgroundImage:`url(${movieDetail.hinhAnh})`,

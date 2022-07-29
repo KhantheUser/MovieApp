@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { MultiSelect } from '@mantine/core';
 import HomeCard from "../../Pages/Home/HomeCard/HomeCard";
 import {AiOutlineDoubleRight,AiOutlineDoubleLeft} from 'react-icons/ai'
 import styled from './MuitipleRow.module.css'
 import {Button} from '@mantine/core'
 import {useDispatch} from 'react-redux'
-import { getMovieComingSoon, getMovieShowing } from "../../Slices/movie";
+import { getMovie, getMovieComingSoon, getMovieShowing } from "../../Slices/movie";
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   
@@ -35,7 +36,15 @@ function SampleNextArrow(props) {
 }
 
  const MultipleRows =(props)=> {
-    
+    const data = [
+  { value: 'react', label: 'React' },
+  { value: 'ng', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'riot', label: 'Riot' },
+  { value: 'next', label: 'Next.js' },
+  { value: 'blitz', label: 'Blitz.js' },
+];
 const dispatch = useDispatch()
  const renderMovie = ()=>{
         return props.movieArr.slice(0,12).map((movie,index)=>{
@@ -61,8 +70,8 @@ const settings = {
       slidesToShow: 3,
       // slidesToScroll: 2,
       speed: 500,
-      rows: 1,
-      slidesPerRow: 2,
+      rows: 2,
+      slidesPerRow: 1,
       variableWidth: true,
       // initialSlide: 0,
       responsive: [
@@ -98,12 +107,27 @@ const settings = {
     };
     
     return (
-      <div style={{marginLeft:'4%'}} className='relative '>
-       {/* <SamplePrevArrow  /> */}
-      <button onClick={()=>{
+      <>
+         <div className=" mx-auto text-center">
+           
+         <button  onClick={()=>{
+        dispatch(getMovie())
+      }}  className={`${styled['now-showing']} mr-3 bg-transparent relative overflow-hidden  text-cyan-700 font-semibold  py-2 px-4 border hover:border-transparent rounded`} variant="outline" color="cyan" ><span className={styled['ani-showing']}></span> All Movies</button>
+           
+        <button  onClick={()=>{
         dispatch(getMovieShowing())
-      }}  className="mr-3 bg-transparent hover:bg-cyan-400 text-cyan-700 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded" variant="outline" color="cyan" >Now Showing</button>
-      <button onClick={()=>dispatch(getMovieComingSoon())} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Coming soon</button>
+      }}  className={`${styled['now-showing']} mr-3 bg-transparent relative overflow-hidden  text-cyan-700 font-semibold  py-2 px-4 border hover:border-transparent rounded`} variant="outline" color="cyan" ><span className={styled['ani-showing']}></span> Now Showing </button>
+      
+      <button  onClick={()=>{
+        dispatch(getMovieComingSoon())
+      }}  className={`${styled['now-showing']} mr-3 bg-transparent relative overflow-hidden  text-cyan-700 font-semibold  py-2 px-4 border hover:border-transparent rounded`} variant="outline" color="cyan" ><span className={styled['ani-showing']}></span> Coming soon </button>
+          
+       </div>
+    
+      <div style={{marginLeft:'4%'}} className='relative '>
+    
+      
+      
 
           <Slider {...settings} className="container-dn overflow-hidden ">
           
@@ -112,6 +136,7 @@ const settings = {
           
         </Slider>
       </div>
+        </>
     );
   
 }
