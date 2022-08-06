@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Card } from 'antd';
 import {AiOutlineGithub,AiFillYoutube,AiFillFacebook,AiFillLinkedin,AiOutlineHeart,AiOutlineComment} from 'react-icons/ai'
 export default function Profile() {
+ const inputImage = useRef()
+ const handlePreviewAvatar = (e)=>{
+      const file = e.target.files[0]
+       const fileReader = new FileReader()
+ const newFile = fileReader.readAsDataURL(file)
+  
+  fileReader.onload = ()=>{
+   
+    const url = fileReader.result
+    setImage(url)
+  }
+
+ }
+const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.15752-9/271195231_948846129090827_3682436811429002979_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=ae9488&_nc_ohc=tmUlZop2T4YAX-G8-xv&_nc_ht=scontent.fhan5-6.fna&oh=03_AVKkBV9LcxwIa5mCjDF5GYWWS3jFK8gsaxcKiLA6LBMxYg&oe=6309FB76')
   return (
   <div className='profile'>
       <div style={{backgroundImage:' linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://scontent.fhan5-6.fna.fbcdn.net/v/t1.6435-9/81612511_582279418996922_6533374512598089728_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=-nqYEJzRwEUAX9RXxwh&_nc_ht=scontent.fhan5-6.fna&oh=00_AT_GdyHREk26xlBvIqAy89Zk6VQwsKY_1ekG-lVWd8OOxA&oe=63097BBB")',height:'600px',backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundAttachment:'fixed'}}>
@@ -14,11 +28,18 @@ export default function Profile() {
 
           </div>
       </div>
-      <div className="grid grid-cols-12 relative" style={{height:'100px',boxShadow:'2px 2px 8px rgba(0,0,0,0.1)',padding:'20px 0'}}>
+      <div  className="grid grid-cols-12 relative" style={{height:'100px',boxShadow:'2px 2px 8px rgba(0,0,0,0.1)',padding:'20px 0'}}>
+      
          <div className='h-36 w-36  bg-white rounded-full overflow-hidden' style={{position:'absolute',top:'50%',left:'50%',transform:'translateY(-50%)',boxShadow:'2px 2px 10px rgba(0,0,0,0.1)'}}>
                   <div>
-                    <img style={{height:'8rem ',width:'8rem' ,position:'relative',top:'8px',left:'8px' }} className="rounded-full" src="https://scontent.fhan5-6.fna.fbcdn.net/v/t1.15752-9/271195231_948846129090827_3682436811429002979_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=ae9488&_nc_ohc=tmUlZop2T4YAX-G8-xv&_nc_ht=scontent.fhan5-6.fna&oh=03_AVKkBV9LcxwIa5mCjDF5GYWWS3jFK8gsaxcKiLA6LBMxYg&oe=6309FB76" alt="" />
+                    <img onClick={()=>{inputImage.current.click();
+//  console.log(inputImage.current.value)
+
+                    }} style={{height:'8rem ',width:'8rem' ,position:'relative',top:'8px',left:'8px' }} className="rounded-full cursor-pointer" src={image} alt="" />
                   </div>
+                  <input onChange={handlePreviewAvatar} ref={inputImage} type="file" className='hidden' id="" />
+
+                    
          </div>
                   <div className='col-start-2 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
                           Home
@@ -36,7 +57,6 @@ export default function Profile() {
                   <div className='col-start-11 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer'>
                           Rating
                   </div>
-                  
       </div>
       <div className="grid grid-cols-12" id="aboutMe" style={{boxShadow:'2px 2px 2px rgba(0,0,0,0.8)',padding:'20px 0'}}>
          <div className='col-span-4 p-14  ' style={{borderRight:'1px solid #ccc'}}>

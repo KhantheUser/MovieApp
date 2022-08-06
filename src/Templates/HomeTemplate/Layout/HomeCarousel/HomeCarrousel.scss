@@ -24,8 +24,13 @@
     border-radius: 100%;
     z-index: 1;
     transition: all .2s linear;
-    top: 4%;
+    top: 2%;
     right: 2%;
+    display: none;
+    @media screen and (min-width : 1024px) {
+            display: block;
+    
+        }
 
     &:before,
     &:after {
@@ -77,8 +82,13 @@
     border-radius: 100%;
     z-index: 1;
     transition: all .2s linear;
-    top: 4%;
+    top: 2%;
     left: -4%;
+    display: none;
+   @media screen and (min-width : 1024px){
+    display: block;
+    
+   }
 
     &:before,
     &:after {

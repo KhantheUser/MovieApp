@@ -83,3 +83,10 @@ justify-content: center;
     line-height: 100px;
     margin: 0;
 }
+@media screen and (max-width: 1024px) {
+    .cardHover{
+        width:300px !important;
+        margin : 0 20px
+    }
+}
+    

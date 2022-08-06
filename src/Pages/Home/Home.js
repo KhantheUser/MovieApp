@@ -12,6 +12,7 @@ import HomeDownload from './HomeDownload/HomeDownload';
 import HomeMore from './HomeMore/HomeMore';
 
 export default function Home() {
+
      const dispatch = useDispatch()
    const [activePage, setPage] = useState(1);
  
@@ -26,7 +27,7 @@ export default function Home() {
   const {cinemaArr} = useSelector(state => state.cinema)
  
   useEffect(()=>{
-      dispatch(getMovie())
+      dispatch(getMoviePage(1))
       dispatch(getCinema())
   },[])
  

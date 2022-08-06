@@ -59,10 +59,10 @@ const renderBanner = ()=>{
     {renderBanner()}
    
   </Carousel>
- <div className="arrow-next-css" onClick={handleNext} >
+ <div className="arrow-next-css " onClick={handleNext} >
 
         </div>
-        <div className="arrow-pre-css" onClick={handleNext} >
+        <div className="arrow-pre-css lg:block" onClick={handlePrev} >
 
         </div>
    </div>

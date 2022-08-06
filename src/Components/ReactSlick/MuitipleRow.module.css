@@ -30,3 +30,6 @@ top: -46px;
 .now-showing:hover .ani-showing{
     transform: rotate(199deg) translate(155px, 10px);
 }
+.slick-dots{
+    display: none !important
+}

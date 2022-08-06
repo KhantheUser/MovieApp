@@ -36,15 +36,7 @@ function SampleNextArrow(props) {
 }
 
  const MultipleRows =(props)=> {
-    const data = [
-  { value: 'react', label: 'React' },
-  { value: 'ng', label: 'Angular' },
-  { value: 'svelte', label: 'Svelte' },
-  { value: 'vue', label: 'Vue' },
-  { value: 'riot', label: 'Riot' },
-  { value: 'next', label: 'Next.js' },
-  { value: 'blitz', label: 'Blitz.js' },
-];
+  console.log(props.movieArr)
 const dispatch = useDispatch()
  const renderMovie = ()=>{
         return props.movieArr.slice(0,12).map((movie,index)=>{
@@ -55,6 +47,9 @@ const dispatch = useDispatch()
                     <HomeCard key={index}  movie={movie}/>
               
                 </div>
+                
+                
+               
                
             )
         })
@@ -62,28 +57,28 @@ const dispatch = useDispatch()
  
     
 const settings = {
-      className: "center slider variable-width",
+      className: "center ",
       centerMode: true,
       infinite: true,
       centerPadding: "60px",
      
       slidesToShow: 3,
-      // slidesToScroll: 2,
       speed: 500,
       rows: 2,
       slidesPerRow: 1,
       variableWidth: true,
-      // initialSlide: 0,
       responsive: [
        
         {
 
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 3,
             infinite: true,
-            dots: true
+            dots: false,
+            rows :1,
+            
           }
         },
         {
@@ -91,14 +86,18 @@ const settings = {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            initialSlide: 2
+            rows:1,
+           
+            
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 510,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            
+            slidesToScroll: 2,
+            rows:1
           }
         }
       ],
@@ -106,6 +105,7 @@ const settings = {
       prevArrow: <SamplePrevArrow />
     };
     
+
     return (
       <>
          <div className=" mx-auto text-center">
@@ -124,17 +124,14 @@ const settings = {
           
        </div>
     
-      <div style={{marginLeft:'4%'}} className='relative '>
+      <div style={{marginLeft:'4%'}} className='relative overflow-hidden'>
     
       
       
-
-          <Slider {...settings} className="container-dn overflow-hidden ">
-          
-          {renderMovie()}
-         
-          
+<Slider {...settings} dots={false}>
+{renderMovie()}
         </Slider>
+        
       </div>
         </>
     );

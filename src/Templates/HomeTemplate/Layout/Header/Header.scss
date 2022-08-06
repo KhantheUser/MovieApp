@@ -10,3 +10,32 @@
         color: #ffd700 !important;
     }
 }
+header {
+    transition: all 0.4s linear;
+    &.disappear{
+        opacity: 0;
+    }
+   
+    
+}
+@keyframes animation {
+   from{
+    left:-200px;
+    opacity: 0;
+   }
+        to {
+                left: 0px;
+            opacity: 1;
+        }
+}
+.mobileModal {
+    @media screen and (min-width:1023px) {
+            display: none
+        }
+    
+}
+.mobile {
+    position: relative;
+    animation: animation 0.4s linear;
+
+}

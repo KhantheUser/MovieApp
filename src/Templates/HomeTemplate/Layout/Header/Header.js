@@ -1,23 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import { HeaderStyle } from '../../../../Scss/Header/HeaderStyle'
 import {NavLink,useNavigate} from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux/es/exports';
-import {FaUserCircle} from 'react-icons/fa'
+import {FaUserCircle,FaBars} from 'react-icons/fa'
 import {BsFillHouseDoorFill} from 'react-icons/bs'
 import {AiFillContacts,AiOutlineGlobal} from 'react-icons/ai'
+import UseWindowSide from '../../../../CustomHook/useWindowSize';
+import cn from 'classnames'
 import { BiNews } from "react-icons/bi"
 // import cn from 'classnames'
-import { USER_LOGIN } from '../../../../Util/Settings/config'
 import {Select} from 'antd'
 import ProfileUser from '../../../../Components/Profile/ProfileUser';
 import './Header.scss'
+
 export default function Header() {
+  const [scroll,setScroll] = useState(0)
+  const size = UseWindowSide()
+  const [isModalMobile,setIsModalMobile] = useState(false)
+
+  
+  useEffect (()=>{
+    window.addEventListener('scroll',()=>{
+      setScroll(window.scrollY)
+    }
+    )
+    return ()=>{
+      window.removeEventListener('scroll',()=>{
+      setScroll(window.scrollY)
+    })
+    }
+  },[scroll])
   const navigate  = useNavigate()
   const { Option } = Select;
  const { t, i18n } = useTranslation();
  const {userLogin }= useSelector(state=> state.user)
- console.log(typeof userLogin)
+ 
  const renderLogin = ()=>{
   if(JSON.stringify(userLogin) === "{}"){
     return (
@@ -25,7 +43,7 @@ export default function Header() {
       <div className="hover:text-yellow-400 userAuth">
 
      
-        <button  onClick={()=>navigate('login')}  className="self-center px-4    py-3 rounded font-semibold ">
+        <button  onClick={()=>navigate('login')}  className="self-center px-4    py-3 rounded font-semibold">
       <FaUserCircle className='inline text-white text-2xl relative -top-1.2 mr-2 icon '/>
 
         {t('Sign in')}
@@ -47,14 +65,15 @@ export default function Header() {
   }
  }
 const handleChange = (value) => {
-  // console.log(`selected ${value}`);
   i18n.changeLanguage(value)
 };
 
   return (
-   
- <header className="p-4  bg-black bg-opacity-80 fixed z-10 top-0 right-0 left-0 text-white">
-  <div className="container flex justify-between h-14 max-h-full mx-auto">
+   <>
+ <header className={cn('p-4  bg-black bg-opacity-80 fixed z-10 top-0 right-0 left-0 text-white ',{
+  'disappear': scroll > 500,
+ })}>
+  <div className="container relative flex justify-between h-10 max-h-full mx-auto">
     <NavLink  to="/" className="flex items-center p-2 hover:scale-110 transition-all duration-1000">
       <img src="./images/logo3.png" className='w-32' alt="" />
     </NavLink>
@@ -98,13 +117,32 @@ const handleChange = (value) => {
     </Select>
     
     </div>
-    <button className="p-4 lg:hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <button onClick={()=>setIsModalMobile(!isModalMobile)} className="p-4 lg:hidden text-2xl" style={{position:'absolute',top:'-44%',right:'-6%'}}>
+      <FaBars/>
     </button>
   </div>
-</header>
+
+  
+</header> 
+
+{/* mobile */}
+{/* {size.width =1023 ? setIsModalMobile(true):''} */}
+ <div  className={cn('mobileModal',{
+
+  'hidden':!isModalMobile,
+})} onClick={(e)=>{
+  e.stopPropagation()
+  console.log(e.target)
+  setIsModalMobile(!isModalMobile)
+}} style={{position:'fixed',top:0,left:0,height:'100vh',zIndex:11,width:'100%',backgroundColor:'rgba(0,0,0,0.6)'}}>
+
+<div className='mobile' style={{width:'200px',height:'100%',backgroundColor:'#fff'}}>
+
+</div>
+</div>
+
+
+</>
 
     
 

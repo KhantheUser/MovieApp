@@ -77,7 +77,7 @@ const movieSlice = createSlice({
           state.movieDetail = payload
         },
         [getMoviePage.fulfilled]:(state,{payload})=>{
-          console.log(payload)
+          
           state.movieArr = payload.slice(0,8)
         }
 

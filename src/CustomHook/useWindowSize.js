@@ -17,7 +17,7 @@ function UseWindowSide() {
         return ()=>{
             window.removeEventListener('resize',handleResize)
         }
-    })
+    },[size])
   return size
 }
 

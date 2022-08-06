@@ -59,9 +59,9 @@ function MovieDetails() {
                       </div>
                     </div>
                     <div className="grid grid-cols-4">
-                      {cumRap.lichChieuPhim?.map((lichChieu,index)=>{
+                      {cumRap.lichChieuPhim?.slice(0,8).map((lichChieu,index)=>{
                         return (
-                          <div key={index} onClick={()=>navigate(`/checkout/${lichChieu.maLichChieu}`)} className="cursor-pointer text-yellow-500 font-semibold bg-slate-900 inline-block text-center rounded-xl ml-1">{dayjs(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY mm:ss A")}</div>
+                          <div key={index} onClick={()=>navigate(`/checkout/${lichChieu.maLichChieu}`)} className="cursor-pointer text-yellow-500 font-semibold bg-slate-900 inline-block text-center rounded-xl mx-1 mt-1">{dayjs(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY mm:ss A")}</div>
                         )
                       })}
                     </div>

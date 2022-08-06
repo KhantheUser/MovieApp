@@ -3,3 +3,46 @@
         background-color: green;
     }
 }
+.cumRapMobile{
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.test{
+   width: 100%;
+   margin: 10px 0;
+    
+         @media screen and (min-width:600px) {
+             
+             margin:10px 10px;
+             width: 45%;
+
+            //  background-color: red;
+         }
+
+    
+}
+.sliderMobile{
+    ul{
+        display: none;
+    }
+    .slick-dots{
+        
+        li{
+            button{
+                &::before{
+                    color : rgb(255, 255, 4);
+                    font-size: 16px;
+                }
+            }
+            &.slick-active{
+                button {
+                        &::before {
+                            color: rgba(226,173,8);
+                            
+                        }
+                    }
+            }
+        }
+    }
+}
