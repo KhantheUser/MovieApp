@@ -119,7 +119,7 @@ export default function HomeMenu(props) {
                           return (
                             <div style={{padding:'6px 10px',background:'#0f172a',borderRadius:5}} key={index}>
 
-                            <NavLink  className="text-green-500" to={`checkout/${lichChieu.maLichChieu}`}>{dayjs(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY")}</NavLink>
+                            <NavLink  className="text-green-500" to={`details/${film.maPhim}`}>{dayjs(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY")}</NavLink>
                             </div>
                           )
                         })}

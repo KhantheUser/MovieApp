@@ -4,10 +4,21 @@ import { useDispatch ,useSelector} from 'react-redux'
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {object,string} from 'yup'
-import { postUserLogin } from '../../Slices/userAuth'
+import { handleModal, postUserLogin } from '../../Slices/userAuth'
+import { Modal } from 'antd';
+
 export default function Login() {
   const navigate =useNavigate()
   const dispatch = useDispatch()
+  const isModalVisible = useSelector((state)=>state.user.successAuth)
+  console.log(isModalVisible)
+ 
+
+  const handleOk = () => {
+    dispatch(handleModal())
+   
+    
+  };
   const schema = object({
     taiKhoan: string().required('Field is required'),
     matKhau: string().required('Field is required')
@@ -21,6 +32,11 @@ export default function Login() {
   });
   return (
    <div style={{backgroundImage:'url("https://images.ctfassets.net/7so8go2zrvbw/2cPBaJIBwmXKiPFmORaRlw/1288322d48e889c11a40b615899230ee/0af6ce3e-b27a-4722-a5f0-e32af4df3045_what_is_netflix_5_en.png?w=800&h=450&q=95&fm=png")',backgroundSize:'100%',backgroundRepeat:'repeat',}} className=" dark:bg-gray-900 ">
+    <Modal title={<div className="text-center text-2xl  text-green-500" style={{fontFamily:"'Edu TAS Beginner', cursive"}}>Oops!!! Your account or password is wrong</div>} visible={isModalVisible} onOk={handleOk} onCancel={handleOk}>
+        <div className="flex justify-center">
+              <img src="http://vidia.vn/vnt_upload/File/Image/dogcute_7.gif" alt="" />
+        </div>
+      </Modal>
   <div className="flex justify-center h-screen">
     <div className="hidden bg-cover lg:block lg:w-2/3" style={{backgroundImage: 'url(https://yi-files.s3.eu-west-1.amazonaws.com/products/1187000/1187484/1980461-full.jpg'}}>
       <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">

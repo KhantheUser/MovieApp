@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { datGhe, datGheThunk, getPhongVe, handleModal, postDatVe, setTabActive } from "../../Slices/ticket";
 import style from "./Checkout.module.css";
 import { Tabs } from "antd";
-import './Checkout.css'
+import './Checkout.scss'
 import _ from "lodash";
 import ThongTinDatVe from "../../_core/ThongTinDatVe";
 import { postThongTinDatVe } from "../../Slices/userAuth";
@@ -20,7 +20,7 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
  function Checkout() {
   const { userLogin } = useSelector((state) => state.user);
   const {ticketLoading} = useSelector((state) => state.ticket)
-  const {successTicket} = useSelector((state)=>state.loading)
+  // const {successTicket} = useSelector((state)=>state.loading)
   const dispatch = useDispatch();
   const { chiTietPhongVe,danhSachGheDangDat,danhSachGheKhachDat } = useSelector((state) => state.ticket);
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
@@ -76,7 +76,7 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
 
 
   return (
-<div style={{backgroundImage:'url("https://i.pinimg.com/originals/87/3f/71/873f71c1f893a0aafad8695324fedfc9.gif")',backgroundSize:'cover ',height:'100%'}}>
+<div className="checkout" style={{backgroundImage:'url("https://i.pinimg.com/originals/87/3f/71/873f71c1f893a0aafad8695324fedfc9.gif")',backgroundSize:'cover ',height:'100%'}}>
       
       <Modal title={<div className="text-center text-2xl  text-green-500" style={{fontFamily:"'Edu TAS Beginner', cursive"}}>Thank you for checkout</div>} visible={isModalVisible} onOk={handleOk} onCancel={handleOk}>
         <div className="flex justify-center">
@@ -87,7 +87,7 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
 
     <div className="container-dn pt-4 " >
       <div className="grid grid-cols-12">
-        <div className="col-span-9">
+        <div className="lg:col-span-9 col-span-12">
           <div className="flex flex-col items-center mt-5">
            
               <div
@@ -133,7 +133,7 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
            
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="lg:col-span-3 col-span-12 p-4 mt-4">
           <h3 className="text-yellow-500 text-center text-3xl">{ danhSachGheDangDat?.reduce((tongTien,gheDD,index)=>{
                   return tongTien + gheDD.giaVe
                 },0).toLocaleString() } vnd</h3>
@@ -220,15 +220,15 @@ return ()=>{
 
 
 
-    <TabPane  tab={<span className="text-white block font-semibold ">Pick your seats and Checkout</span>}  key="1">
+    <TabPane  tab={<span className="text-yellow-400 block font-semibold  ">Pick your seats and Checkout</span>}  key="1">
       
      <Checkout/>
       
     </TabPane>
-    <TabPane tab={<span className="text-white block font-semibold">Payment's history</span>}   key="2">
+    <TabPane tab={<span className="text-yellow-400 block font-semibold">Payment's history</span>}   key="2">
       <KetQuaDatVe/>
     </TabPane>
-    <TabPane tab={<span className="text-white block font-semibold" onClick={()=>navigate('/')}>Home</span>}   key="3">
+    <TabPane tab={<span className="text-yellow-400 block font-semibold" onClick={()=>navigate('/')}>Home</span>}   key="3">
      
     </TabPane>
    

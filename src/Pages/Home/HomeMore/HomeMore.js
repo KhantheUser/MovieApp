@@ -16,11 +16,11 @@ function HomeMore() {
           tab={<div className="text-xl hover:scale-110 text-black transition-all duration-500 ease-in-out font-semibold ">Movies 24h</div>}
           key="1"
         >
-          <div  className="grid grid-cols-12 mt-4 ">
-            <div className="col-start-3 col-span-4 ">
-              <div style={{ width: "95%" }}>
+          <div  className="grid grid-cols-12 mt-4  ">
+            <div className="md:col-start-3 md:col-span-4 col-start-2 col-span-10 md:pr-2  ">
+              <div style={{ width: "100%"}}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px",width:'100%' }}
                   className="rounded-md"
                   src="https://znews-photo.zingcdn.me/w660/Uploaded/vnaits/2022_06_27/fid20178_trid20431.jpg"
                   alt=""
@@ -36,10 +36,10 @@ function HomeMore() {
                 </p>
               </div>
             </div>
-            <div className="col-start-7 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-7 md:col-span-4 col-start-2 col-span-10 md:pl-2 ">
+              <div style={{ width: "100%"  }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px",width:'100%'  }}
                   className="rounded-md"
                   src="https://cdnimg.vietnamplus.vn/t620/uploaded/tpuohuo/2022_07_20/1650197263_conan.jpg"
                   alt=""
@@ -57,17 +57,18 @@ function HomeMore() {
           </div>
           <div>
             <div className="grid grid-cols-12 mt-4">
-              <div className="col-start-3 col-span-8   ">
-                <div className="flex justify-between">
-                  <div className=" w-full">
-                    <div style={{ width: "95%" }}>
+              <div className="md:col-start-3 md:col-span-8 col-start-2 col-span-10   ">
+                <div className="flex justify-between flex-wrap">
+                  <div className="md:w-1/3 md:pr-2" >
+                    <div style={{ width: "100%" }}>
                       <img
-                        className="rounded-sm"
+                       style={{height:'176px',width:'100%'}}
+                        className="rounded-md"
                         src="https://s3img.vcdn.vn/123phim/2020/07/gerard-butler-cung-bo-cu-deadpool-tham-gia-greenland-15937528932506.png"
                         alt=""
                       />
                       <a
-                        className="text-base font-semibold text-black hover:text-red-400"
+                        className="text-base font-semibold text-black hover:text-red-400 block my-2"
                         href=""
                       >
                         Gerard with Deadpool's old girl friend took part in
@@ -80,16 +81,16 @@ function HomeMore() {
                     </div>
                   </div>
 
-                  <div className=" w-full">
-                    <div style={{ width: "95%" }}>
+                  <div className="md:w-1/3 md:px-2">
+                    <div style={{ width: "100%" }}>
                       <img
                         style={{ height: "176px", width: "100%" }}
-                        className="rounded-sm"
+                        className="rounded-md"
                         src="https://i.imgur.com/vz02jVn.jpg"
                         alt=""
                       />
                       <a
-                        className="text-base font-semibold text-black hover:text-red-400"
+                        className="text-base font-semibold text-black hover:text-red-400 block my-2"
                         href=""
                       >
                         The actress of The witch has a simple life
@@ -101,7 +102,7 @@ function HomeMore() {
                       </p>
                     </div>
                   </div>
-                  <div className=" w-full">
+                  <div className=" md:w-1/3 md:pl-2">
                     <div className="flex flex-col">
                       <div className="flex  mb-4">
                         <img
@@ -165,10 +166,10 @@ function HomeMore() {
           key="2"
         >
           <div className="grid grid-cols-12 mt-4 ">
-            <div className="col-start-3 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-3 md:col-span-4 col-start-2 col-span-10 md:pr-2 ">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px" ,width:"100%"}}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2020/03/review-nang-3-loi-hua-cua-cha-cau-chuyen-tinh-than-cam-dong-cua-kha-nhu-va-kieu-minh-tuan-15834049872311.jpg"
                   alt=""
@@ -184,10 +185,10 @@ function HomeMore() {
                 </p>
               </div>
             </div>
-            <div className="col-start-7 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-7 md:col-span-4 col-start-2 col-span-10 md:pl-2">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px" ,width: "100%" }}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2020/03/review-onward-khi-phep-thuat-manh-me-nhat-chinh-la-tinh-than-15832047938817.jpg"
                   alt=""
@@ -205,17 +206,18 @@ function HomeMore() {
           </div>
           <div>
             <div className="grid grid-cols-12 mt-4">
-              <div className="col-start-3 col-span-8   ">
-                <div className="flex justify-between">
-                  <div className=" w-full">
-                    <div style={{ width: "95%" }}>
+              <div className="md:col-start-3 md:col-span-8 col-start-2 col-span-10    ">
+                <div className="flex justify-between flex-wrap">
+                  <div className="md:w-1/3 md:pr-2">
+                    <div style={{ width: "100%" }}>
                       <img
+                      style={{ height: "176px" ,width: "100%" }}
                         className="rounded-sm"
                         src="https://s3img.vcdn.vn/123phim/2020/02/review-ke-vo-hinh-con-gi-dang-so-hon-ke-giet-nguoi-benh-hoan-vo-hinh-15828835353362.jpg"
                         alt=""
                       />
                       <a
-                        className="text-base font-semibold text-black hover:text-red-400"
+                        className="text-base font-semibold text-black hover:text-red-400 block my-2"
                         href=""
                       >
                         [Review] Kẻ Vô Hình - Còn gì đáng sợ hơn kẻ giết người
@@ -228,8 +230,8 @@ function HomeMore() {
                     </div>
                   </div>
 
-                  <div className=" w-full">
-                    <div style={{ width: "95%" }}>
+                  <div className=" md:w-1/3 md:px-2">
+                    <div style={{ width: "100%" }}>
                       <img
                         style={{ height: "176px", width: "100%" }}
                         className="rounded-sm"
@@ -237,7 +239,7 @@ function HomeMore() {
                         alt=""
                       />
                       <a
-                        className="text-base font-semibold text-black hover:text-red-400"
+                        className="text-base font-semibold text-black hover:text-red-400 block my-2"
                         href=""
                       >
                         [Review] Cậu Bé Ma 2 - Bạn trai của 'bé Beo' là đây chứ
@@ -249,7 +251,7 @@ function HomeMore() {
                       </p>
                     </div>
                   </div>
-                  <div className=" w-full">
+                  <div className=" md:w-1/3 md:pl-2">
                     <div className="flex flex-col">
                       <div className="flex  mb-4">
                         <img
@@ -311,10 +313,10 @@ function HomeMore() {
           key="3"
         >
             <div className="grid grid-cols-12 mt-4">
-            <div className="col-start-3 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-3 md:col-span-4 col-start-2 col-span-10 md:pr-2 ">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px",width: "100%" }}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2019/10/123phim-nhap-ma-bkt-giam-ngay-20k-khi-dat-ve-bac-kim-thang-15712976725554.jpg"
                   alt=""
@@ -328,10 +330,10 @@ function HomeMore() {
                 </p>
               </div>
             </div>
-            <div className="col-start-7 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-7 md:col-span-4 col-start-2 col-span-10 md:pl-2  ">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px",width: "100%" }}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2019/08/sinh-nhat-mega-gs-15663933683466.jpg"
                   alt=""
@@ -346,10 +348,10 @@ function HomeMore() {
             </div>
           </div>
              <div className="grid grid-cols-12 ">
-            <div className="col-start-3 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-3 md:col-span-4 col-start-2 col-span-10 md:pr-2 ">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px", width: "100%"  }}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2019/05/galaxy-trang-thi-xem-phim-hay-say-qua-tang-15572160162243.jpg"
                   alt=""
@@ -363,10 +365,10 @@ function HomeMore() {
                 </p>
               </div>
             </div>
-            <div className="col-start-7 col-span-4 ">
-              <div style={{ width: "95%" }}>
+            <div className="md:col-start-7 md:col-span-4 col-start-2 col-span-10 md:pl-2">
+              <div style={{ width: "100%" }}>
                 <img
-                  style={{ height: "287px" }}
+                  style={{ height: "287px" ,width: "100%"}}
                   className="rounded-md"
                   src="https://s3img.vcdn.vn/123phim/2019/05/123phim-tixshop-tro-lai-qua-xin-hon-xua-15583511037699.jpg"
                   alt=""

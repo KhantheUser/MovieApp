@@ -23,7 +23,7 @@ export default function HomeCard(props) {
   <img onError={handleErrorImage} alt="example" src={movie.hinhAnh} className="opacity-0  " style={{height:"250px",maxHeight:'250px'}} />
    <div className='hoverMovie' onClick={()=>dispatch(setMovieTrailer({url:movie.trailer,status:'block'}))} >
     <div className="circle">
-    <p className="flex justify-center items-center">{<FaPlay style={{fontSize:20,lineHeight:50,position: 'relative',top:'12px'}}/>}</p>
+    <p className="flex justify-center items-center">{<FaPlay style={{fontSize:20,lineHeight:50,position: 'relative',top:'14px',left:'1px'}}/>}</p>
   </div>
    </div>
       </div>

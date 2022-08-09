@@ -7,21 +7,23 @@ export default function HomeDownload() {
   color: '#fff',
   
   background: '#364d79',
+ 
+  
 };
   return (
     <div>
       
       <div className='grid grid-cols-11' style={{backgroundImage:'linear-gradient(to bottom ,rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url("https://miro.medium.com/max/1142/1*eYtze01BE5EzuxR_1qT9SA.jpeg")',height:'600px'}}>
-          <div className='col-start-3 col-span-3  flex flex-col justify-center'>
+          <div className='col-start-2 text-center  col-span-9 lg:col-start-3 lg:col-span-3  flex flex-col justify-center'>
           <h1 className='text-white text-3xl ' style={{lineHeight:2.2}}>The convenient application for people love movies</h1>
 <p className="text-white my-5">You can enjoy your moment with people you love ,mark for our cinemas . Also , buy tickets and get more and more attractive gifts   </p>
           <a href="https://www.netflix.com/app" className="text-center text-lg font-semibold text-white inline bg-red-600 rounded-md transition-all duration-200 hover:bg-red-500" style={{padding:'18px 40px'}}>
             DOWNLOAD - FREE !
           </a>
           </div>
-          <div className="col-start-7 col-span-3 flex flex-col justify-center">
-          {/* <h1>asdasdasd</h1> */}
-         <div className='flex items-center' style={{height:'500px',backgroundImage:'url("https://www.nicepng.com/png/full/289-2893061_iphone-x-cutframe-iphone-x-transparent-screen.png")',backgroundSize:'64% 100%',backgroundRepeat:'no-repeat'}}>
+          <div className="col-start-7 col-span-3 lg:flex lg:flex-col lg:justify-center  hidden ">
+          
+         <div className='flex items-center' style={{height:'500px',width:'410px',backgroundImage:'url("https://www.nicepng.com/png/full/289-2893061_iphone-x-cutframe-iphone-x-transparent-screen.png")',backgroundSize:'64% 100%',backgroundRepeat:'no-repeat'}}>
                     <div style={{
                           height: '480px',
     position: 'relative',
@@ -33,7 +35,7 @@ export default function HomeDownload() {
 
                     }}>
                            <Carousel speed={1500} autoplay dots={false}>
-   <div>
+   <div >
       <div style={contentStyle}>
         <img style={{height:'100%'}} src="https://static.mservice.io/blogscontents/momo-upload-api-191219162755-637123696753634114.jpg" alt="" />
       </div>

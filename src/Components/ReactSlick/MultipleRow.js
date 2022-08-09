@@ -36,7 +36,7 @@ function SampleNextArrow(props) {
 }
 
  const MultipleRows =(props)=> {
-  console.log(props.movieArr)
+  
 const dispatch = useDispatch()
  const renderMovie = ()=>{
         return props.movieArr.slice(0,12).map((movie,index)=>{

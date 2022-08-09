@@ -20,7 +20,7 @@ export const history = createBrowserHistory();
 // const CheckoutTemplate = lazy(() => import('./Templates/CheckoutTemplate/CheckoutTemplate'));
 
 function App() {
-  const size = UseWindowSide()
+ 
   return (
     <div className="App relative ">
     <Suspense fallback={<h1>is Loading</h1>}>

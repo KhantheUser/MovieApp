@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {NavLink,useNavigate} from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux/es/exports';
-import {FaUserCircle,FaBars} from 'react-icons/fa'
+import {FaUserCircle,FaBars, FaHome} from 'react-icons/fa'
 import {BsFillHouseDoorFill} from 'react-icons/bs'
 import {AiFillContacts,AiOutlineGlobal} from 'react-icons/ai'
 import UseWindowSide from '../../../../CustomHook/useWindowSize';
@@ -18,6 +18,7 @@ export default function Header() {
   const [scroll,setScroll] = useState(0)
   const size = UseWindowSide()
   const [isModalMobile,setIsModalMobile] = useState(false)
+  
 
   
   useEffect (()=>{
@@ -35,6 +36,7 @@ export default function Header() {
   const { Option } = Select;
  const { t, i18n } = useTranslation();
  const {userLogin }= useSelector(state=> state.user)
+ console.log(userLogin);
  
  const renderLogin = ()=>{
   if(JSON.stringify(userLogin) === "{}"){
@@ -127,16 +129,75 @@ const handleChange = (value) => {
 
 {/* mobile */}
 {/* {size.width =1023 ? setIsModalMobile(true):''} */}
- <div  className={cn('mobileModal',{
+ <div onClick={(e)=>{
+ 
+  
+  setIsModalMobile(!isModalMobile)
+}}  className={cn('mobileModal',{
 
   'hidden':!isModalMobile,
-})} onClick={(e)=>{
-  e.stopPropagation()
-  console.log(e.target)
-  setIsModalMobile(!isModalMobile)
-}} style={{position:'fixed',top:0,left:0,height:'100vh',zIndex:11,width:'100%',backgroundColor:'rgba(0,0,0,0.6)'}}>
+})}  style={{position:'fixed',top:0,left:0,height:'100vh',zIndex:11,width:'100%',backgroundColor:'rgba(0,0,0,0.6)'}}>
 
-<div className='mobile' style={{width:'200px',height:'100%',backgroundColor:'#fff'}}>
+<div className='mobile' style={{width:'40%',height:'100%',backgroundColor:'#fff'}}>
+    <div className="p-4 title" style={{borderBottom:'1px solid #ccc'}}>
+      {JSON.stringify(userLogin) === "{}" ?
+      <>
+       <h3 className='flex items-center cursor-pointer ' onClick={()=>navigate('/login')}>
+      <span className="hover:text-red-300">
+      <FaUserCircle className='inline text-gray-400 text-xl transition duration-400'/>
+
+      </span>
+      <span  className="text-base ml-1 text-gray-400">Login</span>
+      </h3>
+      <h3 className='flex items-center cursor-pointer '>
+      <span>
+      <FaUserCircle className='inline text-gray-400 text-xl transition duration-400'/>
+
+      </span>
+      <span  className="text-base ml-1 text-gray-400">Sign in</span>
+      </h3>
+      </>
+      : 
+      <>
+      <h3 className="text-base text-gray-400">Hello {userLogin.hoTen} {'<3'}</h3>
+      <h3 className='flex items-center cursor-pointer '>
+      <span>
+      <FaUserCircle className='inline text-gray-400 text-xl transition duration-400'/>
+
+      </span>
+      <span  className="text-base ml-1 text-gray-400 " onClick={()=>{
+       localStorage.removeItem('USER_LOGIN');
+            localStorage.removeItem('TOKEN')
+            navigate('/')
+            window.location.reload()
+      }}>Log out</span>
+      </h3>
+      </>
+      }
+      
+
+
+
+      
+      
+    </div>
+    <div className="p-4 title " >
+     <h3 className="font-semibold text-base hover:text-yellow-300 flex items-center transition-all duration-300 cursor-pointer" onClick={()=>navigate('/')}>
+     <FaHome className='inline text-gray-400 text-xl mr-1 '/>
+     Home
+     </h3>
+     <h3 className="font-semibold text-base hover:text-yellow-300 transition-all flex items-center duration-300 cursor-pointer" onClick={()=>navigate('news')}>
+     <BiNews className='inline text-gray-400 text-xl mr-1 '/>
+     News</h3>
+     <h3 className="font-semibold text-base hover:text-yellow-300 transition-all flex items-center duration-300 cursor-pointer" onClick={()=>navigate('contact')}>
+     <AiFillContacts className='inline text-gray-400 text-xl mr-1 '/>
+     Contact</h3>
+      
+    </div>
+</div>
+<div 
+
+ style={{width:'60%',height:'100%',backgroundColor:'red'}}>
 
 </div>
 </div>

@@ -15,8 +15,8 @@ export default function HomeTemplate() {
   return (
     <div style={{backgroundImage:'#F5FFFA'}}>
     <div onClick={(e)=>{e.stopPropagation();dispatch(setMovieTrailer({url:"",status:"none"}));console.log('hello')}}  style={{height:'100vh',backgroundColor:'rgba(0,0,0,0.8',display:'flex',justifyContent: 'center',alignItems:'center'}} className={`fixed top-0 right-0 left-0 z-50  d-${movieTrailer.status}`} >
-          <ReactPlayer width="740px"
-    height="416px" controls  style={{margin:'0 auto',marginTop:'10%',transition:'all 1s linear',transform:'scale(1.2)'}} url={movieTrailer.url} />
+          <ReactPlayer 
+     controls height={'60%'} width={'60%'} style={{margin:'0 auto',marginTop:'10%',transition:'all 1s linear',transform:'scale(1.2)',width:'70%'}} url={movieTrailer.url} />
         </div>
        <Header/>
         

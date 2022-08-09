@@ -6,6 +6,9 @@ const userAuth = {
     },
     postThongTinNguoiDung : ()=>{
         return axiosClient.post('QuanLyNguoiDung/ThongTinTaiKhoan');
+    },
+    postUserRegister : (thongTinDangKy)=>{
+        return axiosClient.post('QuanLyNguoiDung/DangKy',thongTinDangKy);
     }
    
 }

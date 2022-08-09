@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Card } from 'antd';
 import {AiOutlineGithub,AiFillYoutube,AiFillFacebook,AiFillLinkedin,AiOutlineHeart,AiOutlineComment} from 'react-icons/ai'
+import './Profile.scss'
 export default function Profile() {
  const inputImage = useRef()
  const handlePreviewAvatar = (e)=>{
@@ -30,7 +31,7 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
       </div>
       <div  className="grid grid-cols-12 relative" style={{height:'100px',boxShadow:'2px 2px 8px rgba(0,0,0,0.1)',padding:'20px 0'}}>
       
-         <div className='h-36 w-36  bg-white rounded-full overflow-hidden' style={{position:'absolute',top:'50%',left:'50%',transform:'translateY(-50%)',boxShadow:'2px 2px 10px rgba(0,0,0,0.1)'}}>
+         <div className='h-36 w-36  bg-white rounded-full overflow-hidden avatar' >
                   <div>
                     <img onClick={()=>{inputImage.current.click();
 //  console.log(inputImage.current.value)
@@ -41,25 +42,25 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
 
                     
          </div>
-                  <div className='col-start-2 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
+                  <div className='col-start-2 col-span-1  hidden  lg:flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
                           Home
                          
                   </div>
-                  <a href="#aboutMe" className='col-start-3 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
+                  <a href="#aboutMe" className='col-start-3 col-span-1 hidden  lg:flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
                           About me
                   </a>
-                  <a href="#contactHire" className='col-start-4 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
+                  <a href="#contactHire" className='col-start-4 col-span-1  hidden  lg:flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
                           Contact
                   </a>
-                  <a href="#comments" className='col-start-10 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
+                  <a href="#comments" className='col-start-10 col-span-1  hidden  lg:flex items-center text-pink-600 text-lg font-semibold cursor-pointer hover:text-pink-400 transition-all duration-200'>
                           Comments
                   </a>
-                  <div className='col-start-11 col-span-1 flex items-center text-pink-600 text-lg font-semibold cursor-pointer'>
+                  <div className='col-start-11 col-span-1  hidden  lg:flex items-center text-pink-600 text-lg font-semibold cursor-pointer'>
                           Rating
                   </div>
       </div>
       <div className="grid grid-cols-12" id="aboutMe" style={{boxShadow:'2px 2px 2px rgba(0,0,0,0.8)',padding:'20px 0'}}>
-         <div className='col-span-4 p-14  ' style={{borderRight:'1px solid #ccc'}}>
+         <div className='col-span-12 md:col-span-6 lg:col-span-4 p-14  ' style={{borderRight:'1px solid #ccc'}}>
           <h1 className='text-3xl font-semibold mb-12 '>
             Who am I ?
           </h1>
@@ -74,7 +75,7 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
           </button>
           
          </div>
-          <div className='col-span-4 p-14  ' style={{borderRight:'1px solid #ccc'}}>
+          <div className='col-span-12 md:col-span-6 lg:col-span-4 p-14  ' style={{borderRight:'1px solid #ccc'}}>
           <h1 className='text-3xl font-semibold mb-12 '>
             Personal Info
           </h1>
@@ -113,7 +114,7 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
               </span>
           </div>
          </div>
-          <div className='col-span-4 p-14' >
+          <div className='col-span-12 md:col-span-6 lg:col-span-4 p-14' >
           <h1 className='text-3xl font-semibold mb-12 '>
             My Expertise
           </h1>
@@ -155,10 +156,10 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
       <div className='grid grid-cols-9' id="comments">
       
       <div className='  col-start-2 col-span-7 mb-10 flex' >
-            <div style={{width:'30%'}}>
-              <img style={{width:'100%',height:'324px'}} src="http://cdn.tgdd.vn/Files/2021/06/02/1356902/danh-sach-nhung-vu-an-hay-nhat-cua-phim-tham-tu-lung-danh-conan-202207051441250213.jpg" alt="" />
+            <div className="hidden lg:block " style={{width:'30%'}} >
+              <img style={{width:'100%',height:'100%'}} src="http://cdn.tgdd.vn/Files/2021/06/02/1356902/danh-sach-nhung-vu-an-hay-nhat-cua-phim-tham-tu-lung-danh-conan-202207051441250213.jpg" alt="" />
             </div>
-           <div style={{width:'70%',padding:'30px 30px',border:'1px solid #ccc',borderLeft:'none'}}>
+           <div className="w-full lg:w-8/12" style={{padding:'30px 30px',border:'1px solid #ccc'}}>
              <h1 className='text-2xl font-semibold'>Conan 25 : The Bride of Halloween</h1>
              <p>
               <span className='text-gray-400'>
@@ -177,10 +178,10 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
            </div>
       </div>
       <div className='  col-start-2 col-span-7 mb-10 flex' >
-            <div style={{width:'30%'}}>
-              <img style={{width:'100%',height:'324px'}} src="https://vcdn1-giaitri.vnecdn.net/2022/05/05/DoctorStrange2mmm-1651738078-4301-1651738447.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=hvLU0ITOvD2EhxFK8TD8Og" alt="" />
+            <div className="hidden lg:block "  style={{width:'30%'}}>
+              <img style={{width:'100%',height:'100%'}} src="https://vcdn1-giaitri.vnecdn.net/2022/05/05/DoctorStrange2mmm-1651738078-4301-1651738447.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=hvLU0ITOvD2EhxFK8TD8Og" alt="" />
             </div>
-           <div style={{width:'70%',padding:'30px 30px',border:'1px solid #ccc',borderLeft:'none'}}>
+           <div className='w-full lg:w-8/12' style={{padding:'30px 30px',border:'1px solid #ccc'}}>
              <h1 className='text-2xl font-semibold'>Doctor Strange 2 : The madness of muitiverse</h1>
              <p>
               <span className='text-gray-400'>
@@ -197,10 +198,10 @@ const [image,setImage ]= useState('https://scontent.fhan5-6.fna.fbcdn.net/v/t1.1
            </div>
       </div>
       <div className='  col-start-2 col-span-7 mb-10 flex' >
-            <div style={{width:'30%'}}>
-              <img style={{width:'100%',height:'324px'}} src="https://avatar-ex-swe.nixcdn.com/singer/avatar/2016/01/25/4/1/1/7/1453717413223_600.jpg" alt="" />
+            <div className="hidden lg:block "  style={{width:'30%'}}>
+              <img style={{width:'100%',height:'100%'}} src="https://avatar-ex-swe.nixcdn.com/singer/avatar/2016/01/25/4/1/1/7/1453717413223_600.jpg" alt="" />
             </div>
-           <div style={{width:'70%',padding:'30px 30px',border:'1px solid #ccc',borderLeft:'none'}}>
+           <div className='w-full lg:w-8/12' style={{padding:'30px 30px',border:'1px solid #ccc'}}>
              <h1 className='text-2xl font-semibold'>Minions : Despicable Me</h1>
              <p>
               <span className='text-gray-400'>
