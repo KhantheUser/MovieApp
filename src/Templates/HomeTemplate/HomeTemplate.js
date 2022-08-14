@@ -15,11 +15,11 @@ export default function HomeTemplate() {
   return (
     <div style={{backgroundImage:'#F5FFFA'}}>
     <div  onClick={(e)=>{e.stopPropagation();dispatch(setMovieTrailer({url:"",status:"none"}));console.log('hello')}}  style={{height:'100vh',backgroundColor:'rgba(0,0,0,0.8',display:'flex',justifyContent: 'center',alignItems:'center'}} className={`fixed top-0 right-0 left-0  z-50  d-${movieTrailer.status}`} >
-    <div className="w-full   lg:w-7/12 h-full lg:mx-auto flex justify-center items-center">
+    <div className="w-11/12   md:w-7/12 h-full mx-auto flex justify-center items-center">
 
     
           <ReactPlayer 
-     controls   style={{margin:'10% 0',transition:'all 1s linear',transform:'scale(1.2)',width:'83%',height:'60%'}} url={movieTrailer.url} />
+     controls    style={{margin:'10% 0',transition:'all 1s linear',transform:'scale(1.2)'}} url={movieTrailer.url} />
      </div>
         </div>
        <Header/>
