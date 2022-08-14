@@ -1,32 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Rate } from 'antd';
 import { useEffect,useState } from "react";
 import { useDispatch ,useSelector} from "react-redux";
 import { useParams } from "react-router-dom";
 import { getMovie, getMovieDetails } from "../../Slices/movie";
-
+import cn from 'classnames'
 import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
 import './circle.css'
-import {  Radio, Space, Tabs  } from 'antd';
+import {  Tabs  } from 'antd';
 import _, { map } from "lodash";
 
 import './movieDetial.scss'
 import { FaPlay } from "react-icons/fa";
 import ReactPlayer from 'react-player';
 import { setMovieTrailer } from '../../Slices/movie'
+import UseWindowSide from "../../CustomHook/useWindowSize";
 const { TabPane } = Tabs;
 function MovieDetails() {
    
   const { id } = useParams();
+  const test = ['1','2','3']
   const {movieTrailer} = useSelector((state)=>state.movie)
+  const [tenHeThongRap,setTenHeThongRap] = useState()
+  const [tenPosition,setTenPosition] = useState()
+  
+  const [maLichChieuMobile,setMaLichChieuMobile] = useState()
   const navigate = useNavigate();
+  const size  = UseWindowSide()
   const {movieDetail} = useSelector((state)=>state.movie)
   const details = JSON.stringify(movieDetail.heThongRapChieu)
-  console.log(movieDetail)
-  console.log(id)
-   const [tabPosition, setTabPosition] = useState('left');
 
+   const [tabPosition, setTabPosition] = useState('left');
+const optionRef = useRef()
   const changeTabPosition = (e) => {
     setTabPosition(e.target.value);
   };
@@ -79,9 +85,96 @@ function MovieDetails() {
          })
    
   }
-  
+  const renderHeThongRapMobile = ()=>{
+    if(details === '[]'){
+        return <div className="flex items-center justify-center w-100" style={{height:'300px'}}>
+        {/* <h1 className="text-lg text-center block">This film will come soon</h1> */}
+        <div>
+        <h1 className=" text-center text-lg block">This film will come soon... {'<3'}</h1>
+
+        <img src="https://2.bp.blogspot.com/-sZ0qJL0EpK0/XS80WOGQkNI/AAAAAAA1sWc/FYm6tq93O9IKflV2BSG7epni3Y6INv3NgCLcBGAs/s1600/AW3953769_10.gif" alt="" style={{height:'200px'}}/>
+        </div>
+        
+        </div>
+    }else {
+      return (
+        <>
+        <div>
+        <h2 className="text-yellow-300 mb-3 underline">1.Choose your cinema</h2>
+        <div className="flex">
+          {movieDetail.heThongRapChieu?.map((htr,index)=>{
+            return (
+              <div  onClick={(e)=>{
+                e.preventDefault()
+                e.stopPropagation()
+               document.querySelector('.activeLogo')?.classList.remove('activeLogo')
+               e.target.classList.add('activeLogo')
+                setTenHeThongRap(htr.logo);
+                setTenPosition('');
+                setMaLichChieuMobile('');
+                
+                }} className={cn('cursor-pointer ml-2 logo',{
+                 
+                })}  key={index} style={{width:'60px', height:'60px' , border:'1px solid #fff',borderRadius:'5px'}}>
+                <img src={htr.logo}  alt="" className="w-full h-full" />
+              </div>
+            )
+          })}
+        </div>
+        </div>
+        <div>
+        <h2 className="text-yellow-300 my-3 underline">2.Choose your cinema's position</h2>
+          <select  onChange={(e)=>setTenPosition(e.target.value)}  style={{marginLeft:'8px',width:'100%', height:'30px', outline:'none',border:'1px solid #ca9c0d',borderRadius:'5px'}}>
+          <option value=""></option>
+            {movieDetail.heThongRapChieu?.map((htr,index)=>{
+            
+              if(htr.logo===tenHeThongRap){
+                return htr.cumRapChieu?.map((cumRap,index)=>{
+                 
+                  return (
+                    <option  key={index}>{cumRap.tenCumRap}</option>
+                  )
+                })
+              }
+            })}
+          </select>
+         
+        </div>
+        <div>
+                  <h2 className="text-yellow-300 my-3 underline">2.Choose your time</h2>
+                <select onChange={(e)=>setMaLichChieuMobile(e.target.value)}  style={{marginLeft:'8px',width:'100%', height:'30px', outline:'none',border:'1px solid #ca9c0d',borderRadius:'5px'}} name="" id="">
+          <option value=""></option>
+
+                  {movieDetail.heThongRapChieu?.map((htr,index)=>{
+                    if(htr.logo === tenHeThongRap){
+                      let cumRap = htr.cumRapChieu?.find(item=>item.tenCumRap===tenPosition)
+                     return cumRap?.lichChieuPhim.map((lichChieu,index)=>{
+                        return (
+                          <option key={index} value={lichChieu.maLichChieu}>{dayjs(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY mm:ss A")}</option>
+                        )
+                      })
+                    }
+                    
+                  })}
+                </select>
+                
+        </div>
+        
+       <button onClick={()=>{
+        if(maLichChieuMobile){
+          navigate(`/checkout/${maLichChieuMobile}`)
+        }else {
+          return
+        }
+       }} className="ml-2 mt-4 text-yellow-300 rounded-md transition-all duration-300 hover:text-white hover:bg-yellow-300" style={{padding:'6px 12px',border:'1px solid yellow'}}>Get Tickets</button>
+       
+      
+        </>
+      )
+    }
+  }
   return (
-    // linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),
+    
     <div
     className="movieDetails"
       style={{
@@ -101,7 +194,7 @@ function MovieDetails() {
         }}
       >
         <div className="grid grid-cols-12 pt-36">
-          <div className="lg:col-span-5 lg:col-start-3 col-start-3 col-span-8">
+          <div className="lg:col-span-5 lg:col-start-3 col-start-2 col-span-9">
             <div className="grid grid-cols-3">
             <div onClick={()=>dispatch(setMovieTrailer({url:movieDetail.trailer,status:'block'}))} className="lg:col-span-1 col-span-3  rounded-sm relative cardHover trailer " style={{backgroundImage:`url("${movieDetail.hinhAnh}")`,backgroundRepeat:'no-repeat',backgroundSize:'100% 100%',}}>
               <div className="hoverMovie" style={{position: "absolute",top:0,left:0,right:0,height:'100%',display:'block'}}>
@@ -112,7 +205,7 @@ function MovieDetails() {
               <img className=" rounded-md opacity-0" src={movieDetail.hinhAnh} alt="" style={{width:"",height:"350px"}} />
             </div>
               <div className="pl-4 lg:col-span-2 col-span-3 text-white">
-                <p style={{borderBottom:'3px solid #FFA500',display:'inline-block'}} className="text-2xl ">{movieDetail.tenPhim}</p>
+                <p style={{borderBottom:'3px solid #FFA500',display:'inline-block'}} className="text-2xl mt-2 lg:mt-0">{movieDetail.tenPhim}</p>
                 <p><span className="font-bold">-Aliases</span> : {movieDetail.biDanh}</p>
                 <p ><span className="font-bold">-Opening day</span> : {dayjs(movieDetail.ngayKhoiChieu).format('DD/MM/YYYY')}</p>
                 <p><span className="font-bold">-Description</span> : {movieDetail.moTa}</p>
@@ -138,16 +231,16 @@ function MovieDetails() {
         </div>
 
         <div className=" mt-5 text-white pd-12 grid grid-cols-12 ">
-                <div className="col-start-3 col-span-9 ">
+                <div className="col-start-2 ml-4 lg:ml-0 lg:col-start-3 col-span-9 ">
                 <Tabs   defaultActiveKey="1" centered >
     <TabPane tab={<span style={{color: '#FFD700'}}>Showtimes</span>} key="1">
-        <Tabs className="bg-gray-200  rounded-sm" tabPosition={tabPosition}>
+      {size.width > 500 ?   <Tabs className="bg-gray-200  rounded-sm" tabPosition={tabPosition}>
           
           {
            renderHeThongRap()
           }
          
-      </Tabs>
+      </Tabs>: renderHeThongRapMobile()}
     </TabPane>
     <TabPane tab={<span style={{color:'#FFD700'}}>Information</span>} key="2">
       Content of Tab Pane 2

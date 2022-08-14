@@ -63,3 +63,8 @@
 .gheKhachDat:hover{
     transform: scale(1) !important;
 }
+.multiSelect{
+    @media screen and (min-width:888px){
+        display: none;
+    }
+}

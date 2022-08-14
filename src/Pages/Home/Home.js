@@ -37,7 +37,7 @@ export default function Home() {
        <HomeCarousel />
 
     {/* MultipleRows and pagination */}
-    <div className='container-dn mt-20 '>
+    <div className='container-dn mt-14 ' >
     
     
   

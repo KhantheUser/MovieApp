@@ -4,8 +4,9 @@ import { useParams ,useNavigate} from "react-router-dom";
 import {AiOutlineClose} from "react-icons/ai";
 import {FaUserAlt} from 'react-icons/fa'
 import { Button, Modal } from 'antd';
-import styled from "styled-components";
-import { datGhe, datGheThunk, getPhongVe, handleModal, postDatVe, setTabActive } from "../../Slices/ticket";
+// import styled from "styled-components";
+
+import { datGhe, datGheMobile, datGheThunk, getPhongVe, handleModal, postDatVe, setTabActive } from "../../Slices/ticket";
 import style from "./Checkout.module.css";
 import { Tabs } from "antd";
 import './Checkout.scss'
@@ -14,17 +15,37 @@ import ThongTinDatVe from "../../_core/ThongTinDatVe";
 import { postThongTinDatVe } from "../../Slices/userAuth";
 import dayjs from "dayjs";
 import { connection } from "../..";
-import { TOKEN, USER_LOGIN } from "../../Util/Settings/config";
-import { use } from "i18next";
+// import { TOKEN, USER_LOGIN } from "../../Util/Settings/config";
+// import { use } from "i18next";
+import { Select } from 'antd';
 import ProfileUser from "../../Components/Profile/ProfileUser";
- function Checkout() {
-  const { userLogin } = useSelector((state) => state.user);
-  const {ticketLoading} = useSelector((state) => state.ticket)
-  // const {successTicket} = useSelector((state)=>state.loading)
-  const dispatch = useDispatch();
-  const { chiTietPhongVe,danhSachGheDangDat,danhSachGheKhachDat } = useSelector((state) => state.ticket);
+import UseWindowSide from "../../CustomHook/useWindowSize";
+function Checkout() {
+   const { Option } = Select;
+   const { chiTietPhongVe,danhSachGheDangDat,danhSachGheKhachDat } = useSelector((state) => state.ticket);
+   const dispatch = useDispatch();
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
   const { id } = useParams();
+  const size = UseWindowSide()
+   const handleChange = (value) => {
+  // console.log(value);
+
+  let danhSachGheDangDat = []
+  danhSachGhe.forEach((item)=>{
+    if(value.includes(item.tenGhe)){
+      danhSachGheDangDat.push(item)
+    }
+  })
+  dispatch(datGheMobile(danhSachGheDangDat))
+
+
+};
+  const { userLogin } = useSelector((state) => state.user);
+  const {ticketLoading} = useSelector((state) => state.ticket)
+
+  
+  console.log(danhSachGhe);
+
   const renderSeats = () => {
     return danhSachGhe?.map((item,index)=>{
       let classGheKhachDat =''
@@ -58,6 +79,41 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
        </Fragment>
     })
   };
+  const renderSeatsMobile = ()=>{
+    return (
+      <div className=""  style={{width:'100%',height:'70%'}}>
+          <img className="mx-auto" src="https://homemcr.org/app/uploads/2015/04/Cinema-1-Seating-Plan.jpg" style={{width:'90%'}} alt="" />
+     </div>
+    )
+  }
+  const renderSeatListMobile = ()=>{
+    return (
+     <Select
+    mode="multiple"
+    style={{
+      width: '90%',
+      
+    }}
+    placeholder="Select your seats"
+    
+    onChange={handleChange}
+    optionLabelProp="label"
+  >
+   
+   
+  
+   { danhSachGhe?.map((ghe,index)=>{
+    if(ghe.daDat=== false)
+      return (
+        <Option key={index}  value={ghe.tenGhe}>
+        <div className="demo-option-label-item">
+          {ghe.stt} - {ghe.loaiGhe}
+        </div>
+        </Option>
+      )
+    })}
+    </Select>)
+  }
   useEffect(() => {
     dispatch(getPhongVe(id));
     // loading danh sach ghe dang duoc dat tu server
@@ -100,7 +156,7 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
             
 
             <div>
-              {ticketLoading? <div><img style={{width: "150px", height: "150px"}} src="https://cutewallpaper.org/24/loading-gif-png/loadinggifpng5-superior-lawn-care.png"/> </div>:renderSeats()}
+              {ticketLoading? <div><img style={{width: "150px", height: "150px"}} src="https://cutewallpaper.org/24/loading-gif-png/loadinggifpng5-superior-lawn-care.png"/> </div>:size.width<888 ? renderSeatsMobile(): renderSeats()}
             </div>
           </div>
           <div className="mt-5  flex   justify-around">
@@ -132,6 +188,14 @@ import ProfileUser from "../../Components/Profile/ProfileUser";
             </div>
            
           </div>
+
+         
+          <div className="w-full mt-6 text-center multiSelect">
+           
+            {renderSeatListMobile()}
+          </div>
+
+
         </div>
         <div className="lg:col-span-3 col-span-12 p-4 mt-4">
           <h3 className="text-yellow-500 text-center text-3xl">{ danhSachGheDangDat?.reduce((tongTien,gheDD,index)=>{

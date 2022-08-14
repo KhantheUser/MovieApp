@@ -20,7 +20,7 @@ export default function HomeTemplate() {
         </div>
        <Header/>
         
-        <div  className=''> 
+        <div  className='' > 
 
         <Outlet />
         </div>

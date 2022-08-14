@@ -38,11 +38,11 @@ export const datGheThunk = createAsyncThunk('ticket/datGheThunk',async ({item,id
                 await dispatch(datGhe(item))
                 let danhSachGheDangDat = getState().ticket.danhSachGheDangDat;
                 let taiKhoan = getState().user.userLogin.taiKhoan
-                console.log('taiKhoan',taiKhoan);
+                
                 console.log('ghe Dang dat',danhSachGheDangDat);
                 console.log('Ma lich chieu',id);
                 danhSachGheDangDat =JSON.stringify(danhSachGheDangDat);
-                connection.invoke('datGhe',taiKhoan,danhSachGheDangDat,id)
+                // connection.invoke('datGhe',taiKhoan,danhSachGheDangDat,id)
         }catch(e){
             console.log(e);
         }
@@ -61,6 +61,7 @@ const ticketSlice = createSlice({
     },
     reducers: {
         datGhe : (state,{payload})=>{
+            console.log(payload)
             let danhSachGheCapNhap =[...state.danhSachGheDangDat]
             let index = danhSachGheCapNhap.findIndex((item,index)=>{
                 return item.maGhe === payload.maGhe
@@ -77,6 +78,9 @@ const ticketSlice = createSlice({
                 danhSachGheCapNhap.push(payload)
             }
             state.danhSachGheDangDat = danhSachGheCapNhap
+        },
+        datGheMobile : (state,{payload})=>{
+            state.danhSachGheDangDat = payload
         },
         setTabActive : (state,{payload})=>{
             state.tabActive = payload
@@ -125,4 +129,4 @@ const ticketSlice = createSlice({
 })
 
 export default ticketSlice.reducer;
-export const {datGhe,setTabActive,handleModal} = ticketSlice.actions;
+export const {datGhe,setTabActive,handleModal,datGheMobile} = ticketSlice.actions;

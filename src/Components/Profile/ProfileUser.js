@@ -14,13 +14,22 @@ export default function ProfileUser() {
         key: '1',
         style: {background: 'black'},
         label: (
+        <p onClick={()=>navigate('/')} className='text-white my-1 hover:text-yellow-400 hover:bg-black'>
+            Home
+          </p>
+        ),
+      },
+      {
+        key: '2',
+        style: {background: 'black'},
+        label: (
         <p onClick={()=>navigate('/profile')} className='text-white my-1 hover:text-yellow-400 hover:bg-black'>
             Profile
           </p>
         ),
       },
       {
-        key: '2',
+        key: '3',
         style: {background: 'black'},
         label: (
           <p onClick={()=>navigate('/systems')} className='text-white my-1 hover:text-yellow-400'>
@@ -29,7 +38,7 @@ export default function ProfileUser() {
         ),
       },
       {
-        key: '3',
+        key: '4',
         style: {background: 'black'  },
         label: (
            <p onClick={()=>{

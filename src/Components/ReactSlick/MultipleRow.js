@@ -6,7 +6,9 @@ import {AiOutlineDoubleRight,AiOutlineDoubleLeft} from 'react-icons/ai'
 import styled from './MuitipleRow.module.css'
 import {Button} from '@mantine/core'
 import {useDispatch} from 'react-redux'
+import {BsSearch}  from 'react-icons/bs'
 import { getMovie, getMovieComingSoon, getMovieShowing } from "../../Slices/movie";
+import UseWindowSide from "../../CustomHook/useWindowSize";
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   
@@ -36,7 +38,7 @@ function SampleNextArrow(props) {
 }
 
  const MultipleRows =(props)=> {
-  
+  const size  = UseWindowSide()
 const dispatch = useDispatch()
  const renderMovie = ()=>{
         return props.movieArr.slice(0,12).map((movie,index)=>{
@@ -99,16 +101,24 @@ const settings = {
             slidesToScroll: 2,
             rows:1
           }
-        }
+        },
+        
+        
       ],
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
     
-
+const settings2 = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     return (
       <>
-         <div className=" mx-auto text-center">
+      {size.width >500?  <div className=" mx-auto text-center">
            
          <button  onClick={()=>{
         dispatch(getMovie())
@@ -122,16 +132,23 @@ const settings = {
         dispatch(getMovieComingSoon())
       }}  className={`${styled['now-showing']} mr-3 bg-transparent relative overflow-hidden  text-cyan-700 font-semibold  py-2 px-4 border hover:border-transparent rounded`} variant="outline" color="cyan" ><span className={styled['ani-showing']}></span> Coming soon </button>
           
-       </div>
+       </div> :<div className="text-center px-3 py-3 relative">
+        <input type="text" name="" placeholder="Search your movie" id="" className="" style={{width:'90%',padding:'12px 20px',borderRadius:'9999999px',border:'1px solid orange','outline':'none'}}/>
+        <span className="absolute text-lg" style={{top:'40%',right:'12%'}}><BsSearch color="orange"/></span>
+       </div>}
+       
     
-      <div style={{marginLeft:'4%'}} className='relative overflow-hidden'>
+      <div style={{marginLeft:'4%'}} className='relative overflow-hidden' >
     
       
       
-<Slider {...settings} dots={false}>
+{size.width >= 500 ? <Slider {...settings} dots={false}>
 {renderMovie()}
-        </Slider>
-        
+        </Slider> :<Slider {...settings2} dots={false}>
+{renderMovie()}
+        </Slider>}
+
+       
       </div>
         </>
     );

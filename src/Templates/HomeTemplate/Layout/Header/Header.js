@@ -36,7 +36,7 @@ export default function Header() {
   const { Option } = Select;
  const { t, i18n } = useTranslation();
  const {userLogin }= useSelector(state=> state.user)
- console.log(userLogin);
+
  
  const renderLogin = ()=>{
   if(JSON.stringify(userLogin) === "{}"){
@@ -149,12 +149,12 @@ const handleChange = (value) => {
       </span>
       <span  className="text-base ml-1 text-gray-400">Login</span>
       </h3>
-      <h3 className='flex items-center cursor-pointer '>
+      <h3 className='flex items-center cursor-pointer ' onClick={()=>navigate('/register')}>
       <span>
       <FaUserCircle className='inline text-gray-400 text-xl transition duration-400'/>
 
       </span>
-      <span  className="text-base ml-1 text-gray-400">Sign in</span>
+      <span  className="text-base ml-1 text-gray-400">Sign up</span>
       </h3>
       </>
       : 
@@ -192,6 +192,9 @@ const handleChange = (value) => {
      <h3 className="font-semibold text-base hover:text-yellow-300 transition-all flex items-center duration-300 cursor-pointer" onClick={()=>navigate('contact')}>
      <AiFillContacts className='inline text-gray-400 text-xl mr-1 '/>
      Contact</h3>
+     <h3 className="font-semibold text-base hover:text-yellow-300 transition-all flex items-center duration-300 cursor-pointer" onClick={()=>navigate('profile')}>
+     <FaUserCircle className='inline text-gray-400 text-xl mr-1 '/>
+     Profile</h3>
       
     </div>
 </div>
